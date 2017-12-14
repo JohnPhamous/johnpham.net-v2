@@ -34,29 +34,31 @@
       <h4 class="section-title text-center">Places I've worked for.</h4>
 
       <div class="row">
-        <div class="col-md-3 offset-md-3 work-container">
-          <img class="work-item" src="../static/google.png" alt="Google">
-        </div>
-        <div class="col-md-3 work-container">
-          <img class="work-item" src="../static/aerospace.png" alt="Aerospace Corporation">
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-3 offset-md-2 work-container">
-          <img class="work-item work-container" src="../static/nasa-jpl.png" alt="NASA JPL">
-        </div>
-        <div class="col-md-3 work-container">
-          <img class="work-item" src="../static/amazon.png" alt="Amazon">
-        </div>
-        <div class="col-md-3 work-container">
-          <img class="work-item" src="../static/aaf.png" alt="American Advertising Agency">
+        <div v-for="w in workplaces"
+          :key="w.name"
+          class="col-md-3 work-container"
+        >
+          <a :href="w.link" target="_blank">
+            <img class="work-item" :src="`../static/work/${w.image}`" :alt="w.name">
+          </a>
         </div>
       </div>
     </div>
 
     <div class="section container">
-      <h4 class="section-title text-center">What I've been up to.</h4>
+      <h4 class="section-title text-center">Organizations I'm a part of.</h4>
+      
+      <div class="row">
+        <div v-for="o in orgs"
+          :key="o.name"
+          class="col-md-2 text-center work-container"
+          :class="{ 'offset-md-1' : o.image == 'acm.png'}"
+        >
+          <a :href="o.url" target="_blank">
+            <img class="work-item mb-2" :src="`../static/orgs/${o.image}`" :alt="o.name">
+          </a>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -78,6 +80,7 @@ html, body {
   margin-top: 30px;
 }
 .section-title {
+  margin-top: 100px;
   margin-bottom: 30px;
   font-weight: 600;
 }
@@ -157,6 +160,64 @@ export default {
           imageUrl: 'grepjobs.png',
           role: 'Project Lead, Front-end Developer',
           description: 'Won the Best Data Visualization Prize and placed in the Top 10 out of 170 at PennApps'
+        }
+      ],
+      workplaces: [
+        {
+          name: 'Aerospace Corporation',
+          image: 'aerospace.png',
+          link: 'http://www.aerospace.org/',
+          position: 'Software Engineer Intern'
+        },
+        {
+          name: 'NASA JPL',
+          image: 'nasa-jpl.png',
+          link: 'https://www.jpl.nasa.gov/',
+          position: 'Software Engineer Intern'
+        },
+        {
+          name: 'Amazon',
+          image: 'amazon.png',
+          link: 'http://amazon.com/',
+          position: 'UI/UX Design Intern'
+        },
+        {
+          name: 'American Advertising Agency',
+          image: 'aaf.png',
+          link: 'http://www.aaf.org/',
+          position: 'Graphic Design Intern'
+        }
+      ],
+      orgs: [
+        {
+          name: 'Association for Computing Machinery',
+          image: 'acm.png',
+          url: 'http://acmucr.org/'
+        },
+        {
+          name: 'Bourns College of Engineering Leadership Council',
+          image: 'bcoelc.jpg',
+          url: 'http://bcoelc.com'
+        },
+        {
+          name: 'University Innovation Fellows',
+          image: 'uif.png',
+          url: 'http://universityinnovationfellows.org/'
+        },
+        {
+          name: 'GitHub Campus Experts',
+          image: 'github.png',
+          url: 'https://education.github.com/experts'
+        },
+        {
+          name: 'Citrus Hack',
+          image: 'citrushack.gif',
+          url: 'http://citrushack.com'
+        },
+        {
+          name: '',
+          image: '',
+          url: ''
         }
       ]
     }
